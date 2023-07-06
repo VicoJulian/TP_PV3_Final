@@ -1,0 +1,131 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Tilemap/tilemap_packed.png" type="Texture" id=1]
+[ext_resource path="res://player/player.gd" type="Script" id=2]
+[ext_resource path="res://player/Bara.gd" type="Script" id=3]
+
+[sub_resource type="Shader" id=9]
+code = "shader_type canvas_item;
+
+uniform vec4 violeta:hint_color;//=vec4(0.64,0.0,0.68,1.0);
+uniform vec4 rojo:hint_color;//=vec4(0.92,0.02,0.02,1.0);
+
+uniform vec4 barba:hint_color;//=vec4(0.75,0.8,0.86,1.0)
+uniform vec4 barba_nueva:hint_color;//=vec4(0.32,0.50,0.80,1.0);
+
+uniform float tolerance: hint_range(0.0,1.0)=0.0;
+void fragment(){
+	vec4 color_original=texture(TEXTURE,UV);
+	vec3 color=color_original.rgb;
+	float a=color_original.a;
+	
+	float skin_dist=distance(color,violeta.rgb);
+	float skin_dist2=distance(color,barba.rgb);
+	
+	color=mix(rojo.rgb,color,step(tolerance,skin_dist-0.38));
+	
+	color=mix(barba_nueva.rgb,color,step(tolerance,skin_dist2-0.1));
+	
+	
+	COLOR=vec4(color,a);
+	
+	
+	
+	
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 9 )
+shader_param/violeta = null
+shader_param/rojo = null
+shader_param/barba = null
+shader_param/barba_nueva = null
+shader_param/tolerance = 0.0
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 112, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 9.5, 10 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 128, 160, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 80, 160, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 112, 160, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 96, 160, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "azul",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "gris",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "rojo",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "verde",
+"speed": 5.0
+} ]
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+material = SubResource( 10 )
+frames = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0.5, 0 )
+shape = SubResource( 3 )
+
+[node name="Bara" type="AnimatedSprite" parent="."]
+position = Vector2( 8, 1 )
+rotation = 0.459525
+scale = Vector2( 0.767156, 0.767156 )
+frames = SubResource( 8 )
+animation = "gris"
+script = ExtResource( 3 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 20, 0 )
+
+[node name="puede_disparar" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="puede_disparar" to="." method="_on_puede_disparar_timeout"]

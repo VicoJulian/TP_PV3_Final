@@ -1,0 +1,16 @@
+extends KinematicBody2D
+
+
+var stop=true
+export var posicion_vara= Vector2(65,85)
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+func _process(delta):
+	if(Globales.Vara_poder_verde&&stop):
+		print("Vara habilitada")
+		position=posicion_vara
+		stop=false
+	

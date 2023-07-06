@@ -1,0 +1,24 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+uniform vec4 azul:hint_color;//=vec4(0.32,0.64,0.64,1.0);
+uniform vec4 rojo:hint_color;//=vec4(0.74,0.13,0.13,1.0);
+
+
+uniform float tolerance: hint_range(0.0,1.0)=0.163; 
+
+
+void fragment() {	
+	vec4 color_personaje=texture(TEXTURE,UV);
+	vec3 color=color_personaje.rgb;
+	float a=color_personaje.a;
+	float skin_dist=distance(color,azul.rgb);
+	
+	color=mix(rojo.rgb,color,step(tolerance,skin_dist-0.4));//usemos el 0.5 abarca mas
+	
+
+	
+	COLOR=vec4(color,a);
+	
+}"
