@@ -11,4 +11,4 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	set_offset(get_offset()+25*delta)
+	set_offset(get_offset()+50*delta)

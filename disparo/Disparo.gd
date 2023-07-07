@@ -17,7 +17,7 @@ func _ready():
 
 func _physics_process(delta):
 	var movimiento=velocidad*delta
-	move_and_slide(movimiento)
+	
 	if (get_slide_collision(get_slide_count()-1)!=null):
 		var obj_colision=get_slide_collision(get_slide_count()-1).collider
 		if (obj_colision.is_in_group("enemigo")):
@@ -32,4 +32,6 @@ func _physics_process(delta):
 		
 	if (Globales.Vara_poder_verde):
 		$AnimatedSprite.material.set("shader_param/rojo",disparo_rojo)
+		
+	move_and_slide(movimiento)
 

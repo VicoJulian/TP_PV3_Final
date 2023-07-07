@@ -69,6 +69,13 @@ func _physics_process(delta):
 			if (obj_colision.is_in_group("Pozo")):
 				print("SE CAYO")
 				position=Vector2(72,13)
+			if (obj_colision.is_in_group("bola_fuego")):
+				print("MUERTO")
+				obj_colision.queue_free()
+				position=Vector2(72,13)
+			if (obj_colision.is_in_group("enemigo")):
+				print("MUERTO")
+				position=Vector2(72,13)
 				
 	if (Input.is_action_just_pressed("interactuar")):
 		if (get_slide_collision(get_slide_count()-1)!=null):
