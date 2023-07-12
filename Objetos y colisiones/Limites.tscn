@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 160.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 205.5, 10 )
+
+[node name="Limites" type="Node2D"]
+
+[node name="Limites" type="StaticBody2D" parent="." groups=["colision"]]
+position = Vector2( -7, -3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites"]
+position = Vector2( 0, 150.5 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Limites"]
+position = Vector2( 406, 153 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Limites"]
+position = Vector2( 195.5, 0 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Limites"]
+position = Vector2( 195, 311 )
+shape = SubResource( 2 )

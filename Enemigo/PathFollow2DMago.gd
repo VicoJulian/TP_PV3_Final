@@ -12,7 +12,7 @@ func _process(delta):
 	set_offset(get_offset()+80*delta)
 	
 	
-	if (PUEDE_DISPARAR):
+	if (PUEDE_DISPARAR&& Globales.Detener_disparo_mago):
 		$Timer.start()
 		PUEDE_DISPARAR=false
 		var nuevo_disparo=disparo.instance()
@@ -22,6 +22,8 @@ func _process(delta):
 		
 		get_tree().get_nodes_in_group("main")[0].add_child(nuevo_disparo)
 		nuevo_disparo.velocidad.x=-1*nuevo_disparo.potencia
+		
+	
 	
 	
 	

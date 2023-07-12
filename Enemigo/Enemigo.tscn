@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Enemigo/Enemigo.gd" type="Script" id=1]
-[ext_resource path="res://Tiles/tile_0121.png" type="Texture" id=2]
+[ext_resource path="res://Tiles/tile_0120.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 8.5 )
+extents = Vector2( 7.99827, 8.32175 )
 
 [node name="Enemigo" type="KinematicBody2D" groups=["enemigo"]]
 script = ExtResource( 1 )

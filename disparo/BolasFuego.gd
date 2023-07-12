@@ -16,6 +16,10 @@ func _physics_process(delta):
 		var obj_colision=get_slide_collision(get_slide_count()-1).collider
 		if (obj_colision.is_in_group("Pozo")): 
 			queue_free()#destruyo el disparo
+		if (obj_colision.is_in_group("enemigo")): 
+			queue_free()#destruyo el disparo
+		if (obj_colision.is_in_group("colision")): 
+			queue_free()#destruyo el disparo
 	
 	
 	

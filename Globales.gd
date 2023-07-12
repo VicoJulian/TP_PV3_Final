@@ -6,16 +6,17 @@ var Cofre_dos=false
 var Cofre_tres=false
 
 var Traje_uno=false
-var Traje_dos=false
-var Traje_tres=false
+
 
 var Llave_uno=false
-var Llave_dos=false
+
 
 var Puerta_uno_abierta=false
 var Puerta_dos_abierta=false
 
 var Vara_poder_verde=false
+
+var Detener_disparo_mago=true
 
 #		HABILITO COFRE
 #		APARECE LLAVE 

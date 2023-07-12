@@ -70,7 +70,7 @@ func _physics_process(delta):
 				print("SE CAYO")
 				position=Vector2(72,13)
 			if (obj_colision.is_in_group("bola_fuego")):
-				print("MUERTO")
+				print("MUERTO POR MAGO")
 				obj_colision.queue_free()
 				position=Vector2(72,13)
 			if (obj_colision.is_in_group("enemigo")):
@@ -97,7 +97,14 @@ func _physics_process(delta):
 				
 			if (obj_colision.is_in_group("puertapb")&& Globales.Puerta_dos_abierta):
 				print("paso a la torre")
-	
+				get_tree().change_scene("res://Torre.tscn")
+				
+			if (obj_colision.is_in_group("bara_mago_malo")):
+				print("FIN")
+	if (Globales.Puerta_dos_abierta):
+		_on_cambiar_traje()
+		
+		
 	motion = motion.normalized()*100*0.5
 	move_and_slide(motion)
 

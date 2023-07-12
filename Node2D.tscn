@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Tilemap/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Globales.gd" type="Script" id=9]
 [ext_resource path="res://Llave/Llave.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Enemigo/PathFollow2D.gd" type="Script" id=11]
+[ext_resource path="res://Tiles/tile_0121.png" type="Texture" id=12]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -64,6 +65,7 @@ rotation = -1.5708
 
 [node name="Sprite" parent="Path2D/PathFollow2D/Enemigo" index="0"]
 position = Vector2( 1, 1 )
+texture = ExtResource( 12 )
 
 [node name="CollisionShape2D" parent="Path2D/PathFollow2D/Enemigo" index="1"]
 visible = true
@@ -84,6 +86,7 @@ rotation = -1.5708
 
 [node name="Sprite" parent="Path2D2/PathFollow2D/Enemigo" index="0"]
 position = Vector2( 2, 0 )
+texture = ExtResource( 12 )
 
 [node name="CollisionShape2D" parent="Path2D2/PathFollow2D/Enemigo" index="1"]
 visible = true

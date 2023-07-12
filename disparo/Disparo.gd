@@ -23,11 +23,15 @@ func _physics_process(delta):
 		if (obj_colision.is_in_group("enemigo")):
 			obj_colision.queue_free() #destruyo al enemigo
 			queue_free()#destruyo el disparo
-		elif (obj_colision.is_in_group("colision")):
+		if (obj_colision.is_in_group("colision")):
 				queue_free()#destruyo el disparo
-		elif (obj_colision.is_in_group("cofre")):
+		if (obj_colision.is_in_group("cofre")):
 				queue_free()#destruyo el disparo
-		elif (obj_colision.is_in_group("Pozo")):
+		if (obj_colision.is_in_group("Pozo")):
+			queue_free()#destruyo el disparo
+		if (obj_colision.is_in_group("mago_final")):
+			Globales.Detener_disparo_mago=false
+			obj_colision.queue_free()#destruyo el disparo
 			queue_free()#destruyo el disparo
 		
 	if (Globales.Vara_poder_verde):

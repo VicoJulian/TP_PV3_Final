@@ -1,19 +1,21 @@
 extends KinematicBody2D
 
 
-onready var movimiento=get_parent()
-
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-	
-	
-func _physics_process(delta):
-	pass
-	
-	
-	
-	
 
+
+func _physics_process(delta):
+	if (!Globales.Detener_disparo_mago):
+		position=Vector2(200,150)
+	
+	
+	
+	
+	
