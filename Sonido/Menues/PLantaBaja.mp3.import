@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/PLantaBaja.mp3-bca0eb7db344419ce1099c547578f09c.mp3str"
+
+[deps]
+
+source_file="res://Sonido/Menues/PLantaBaja.mp3"
+dest_files=[ "res://.import/PLantaBaja.mp3-bca0eb7db344419ce1099c547578f09c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
