@@ -6,10 +6,7 @@ var Cofre_dos=false
 var Cofre_tres=false
 
 var Traje_uno=false
-
-
 var Llave_uno=false
-
 
 var Puerta_uno_abierta=false
 var Puerta_dos_abierta=false
@@ -17,6 +14,8 @@ var Puerta_dos_abierta=false
 var Vara_poder_verde=false
 
 var Detener_disparo_mago=true
+
+var Vidas=3
 
 #		HABILITO COFRE
 #		APARECE LLAVE 
@@ -30,8 +29,3 @@ var Detener_disparo_mago=true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

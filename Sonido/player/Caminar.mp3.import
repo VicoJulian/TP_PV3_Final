@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Caminar.mp3-7a71af5a9b298b168b33b26a72e43361.mp3str"
+
+[deps]
+
+source_file="res://Sonido/player/Caminar.mp3"
+dest_files=[ "res://.import/Caminar.mp3-7a71af5a9b298b168b33b26a72e43361.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

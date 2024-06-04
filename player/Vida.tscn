@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://player/Vida.gd" type="Script" id=1]
+[ext_resource path="res://Tilemap/Corazon.png" type="Texture" id=2]
+
+[node name="Vida" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 14, 10 )
+scale = Vector2( 0.00686145, 0.00686145 )
+texture = ExtResource( 2 )
+
+[node name="VidaLabel" type="Label" parent="."]
+margin_left = 23.0
+margin_top = 4.0
+margin_right = 33.0
+margin_bottom = 18.0
+text = "0"

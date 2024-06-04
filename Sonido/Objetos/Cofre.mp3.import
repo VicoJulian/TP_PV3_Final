@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Cofre.mp3-be77d1a1bca121576c4757893e8ddf59.mp3str"
+
+[deps]
+
+source_file="res://Sonido/Objetos/Cofre.mp3"
+dest_files=[ "res://.import/Cofre.mp3-be77d1a1bca121576c4757893e8ddf59.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

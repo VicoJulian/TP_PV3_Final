@@ -7,11 +7,15 @@ export (Vector2) var dis_der
 var apuntar_der=true
 var PUEDE_DISPARAR=true
 
+
+
 #////////////////TRAJE///////////////#
 var traje_mago:Color=Color(0.60,0.29,0.63,1.0)
 var traje_rojo:Color=Color(0.92,0.02,0.02,1.0)
 var barba_mago:Color=Color(0.75,0.8,0.86,1.0)
 var barba_azul:Color=Color(0.32,0.50,0.80,1.0)
+
+
 
 
 func _ready():
@@ -20,6 +24,8 @@ func _ready():
 	$Sprite.material.set("shader_param/rojo",traje_mago)
 	$Sprite.material.set("shader_param/barba",barba_mago)
 	$Sprite.material.set("shader_param/barba_nueva",barba_mago)
+	
+	
 	
 func _input(event):
 	pass
@@ -31,6 +37,7 @@ func _physics_process(delta):
 	var motion = Vector2()
 	if (Input.is_action_pressed("ui_up")):
 		motion+=Vector2(0,-0.5)
+		
 		
 	if (Input.is_action_pressed("ui_down")):
 		motion+=Vector2(0,+0.5)
@@ -54,6 +61,7 @@ func _physics_process(delta):
 		nuevo_disparo.global_position=get_node("Position2D").global_position
 		get_tree().get_nodes_in_group("main")[0].add_child(nuevo_disparo)
 		PUEDE_DISPARAR=false
+		$SonidoDispato.play()
 		get_node("puede_disparar").start() #inicio el time
 		if (apuntar_der):
 			nuevo_disparo.velocidad.x=nuevo_disparo.potencia
@@ -66,16 +74,24 @@ func _physics_process(delta):
 			if (obj_colision.is_in_group("pinches")):
 				print("PINCHE CONTACTO")
 				position=Vector2(72,13)
+				Globales.Vidas-=1
+				$Muerto.play()
 			if (obj_colision.is_in_group("Pozo")):
 				print("SE CAYO")
 				position=Vector2(72,13)
+				Globales.Vidas-=1
+				$Muerto.play()
 			if (obj_colision.is_in_group("bola_fuego")):
 				print("MUERTO POR MAGO")
 				obj_colision.queue_free()
 				position=Vector2(72,13)
+				Globales.Vidas-=1
+				$Muerto.play()
 			if (obj_colision.is_in_group("enemigo")):
 				print("MUERTO")
 				position=Vector2(72,13)
+				Globales.Vidas-=1
+				$Muerto.play()
 				
 	if (Input.is_action_just_pressed("interactuar")):
 		if (get_slide_collision(get_slide_count()-1)!=null):
@@ -100,14 +116,18 @@ func _physics_process(delta):
 				get_tree().change_scene("res://Torre.tscn")
 				
 			if (obj_colision.is_in_group("bara_mago_malo")):
+				get_tree().change_scene("res://Menues/Fin.tscn")
 				print("FIN")
+				
 	if (Globales.Puerta_dos_abierta):
 		_on_cambiar_traje()
 		
 		
 	motion = motion.normalized()*100*0.5
 	move_and_slide(motion)
-
+	
+	if (Globales.Vidas<1):
+		get_tree().change_scene("res://Menues/Muerto.tscn")
 	
 	
 

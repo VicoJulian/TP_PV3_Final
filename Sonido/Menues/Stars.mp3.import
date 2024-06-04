@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Stars.mp3-739119fe5981dbcdd324c12338204eb2.mp3str"
+
+[deps]
+
+source_file="res://Sonido/Menues/Stars.mp3"
+dest_files=[ "res://.import/Stars.mp3-739119fe5981dbcdd324c12338204eb2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

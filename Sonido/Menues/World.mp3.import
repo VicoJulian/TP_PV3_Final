@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/World.mp3-5dbe1efd6ea01419d16114f8f0189be0.mp3str"
+
+[deps]
+
+source_file="res://Sonido/Menues/World.mp3"
+dest_files=[ "res://.import/World.mp3-5dbe1efd6ea01419d16114f8f0189be0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
