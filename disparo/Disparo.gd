@@ -18,21 +18,31 @@ func _ready():
 func _physics_process(delta):
 	var movimiento=velocidad*delta
 	
-	if (get_slide_collision(get_slide_count()-1)!=null):
-		var obj_colision=get_slide_collision(get_slide_count()-1).collider
-		if (obj_colision.is_in_group("enemigo")):
-			obj_colision.queue_free() #destruyo al enemigo
-			queue_free()#destruyo el disparo
-		if (obj_colision.is_in_group("colision")):
+	if get_slide_count() > 0:
+		var collision = get_slide_collision(get_slide_count() - 1)
+		if collision:
+			var obj_colision = collision.collider
+			if (obj_colision.is_in_group("enemigo")):
+				obj_colision.queue_free() #destruyo al enemigo
 				queue_free()#destruyo el disparo
-		if (obj_colision.is_in_group("cofre")):
+			if (obj_colision.is_in_group("colision")):
+					queue_free()#destruyo el disparo
+			if (obj_colision.is_in_group("cofre")):
+					queue_free()#destruyo el disparo
+			if (obj_colision.is_in_group("cofrepb")):
+					queue_free()#destruyo el disparo
+			if (obj_colision.is_in_group("Pozo")):
 				queue_free()#destruyo el disparo
-		if (obj_colision.is_in_group("Pozo")):
-			queue_free()#destruyo el disparo
-		if (obj_colision.is_in_group("mago_final")):
-			Globales.Detener_disparo_mago=false
-			obj_colision.queue_free()#destruyo el disparo
-			queue_free()#destruyo el disparo
+			if (obj_colision.is_in_group("pinches")):
+				queue_free()#destruyo el disparo
+			if (obj_colision.is_in_group("bola_fuego")):
+				queue_free()#destruyo el disparo
+			if (obj_colision.is_in_group("bara_mago_malo")):
+				queue_free()#destruyo el disparo
+			if (obj_colision.is_in_group("mago_final")):
+				Globales.Detener_disparo_mago=false
+				obj_colision.queue_free()#destruyo el disparo
+				queue_free()#destruyo el disparo
 		
 	if (Globales.Vara_poder_verde):
 		$AnimatedSprite.material.set("shader_param/rojo",disparo_rojo)

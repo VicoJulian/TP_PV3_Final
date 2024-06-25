@@ -12,14 +12,15 @@ func _ready():
 func _physics_process(delta):
 	var movimiento=velocidad*delta
 	move_and_slide(movimiento)
-	if (get_slide_collision(get_slide_count()-1)!=null):
-		var obj_colision=get_slide_collision(get_slide_count()-1).collider
-		if (obj_colision.is_in_group("Pozo")): 
-			queue_free()#destruyo el disparo
-		if (obj_colision.is_in_group("enemigo")): 
-			queue_free()#destruyo el disparo
-		if (obj_colision.is_in_group("colision")): 
-			queue_free()#destruyo el disparo
+	if get_slide_count() > 0:
+		if (get_slide_collision(get_slide_count()-1)!=null):
+				var obj_colision=get_slide_collision(get_slide_count()-1).collider
+				if (obj_colision.is_in_group("Pozo")): 
+					queue_free()#destruyo el disparo
+				if (obj_colision.is_in_group("enemigo")): 
+					queue_free()#destruyo el disparo
+				if (obj_colision.is_in_group("colision")): 
+					queue_free()#destruyo el disparo
 	
 	
 	

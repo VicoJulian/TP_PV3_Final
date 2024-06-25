@@ -188,13 +188,10 @@ position = Vector2( 263, 143 )
 rotation = -0.00835419
 rotate = false
 script = ExtResource( 7 )
-disparo = ExtResource( 8 )
 
 [node name="EnemigoFinal" parent="Path2D/PathFollow2D" groups=["mago_final"] instance=ExtResource( 4 )]
 position = Vector2( 0, -4 )
-
-[node name="Timer" type="Timer" parent="Path2D/PathFollow2D"]
-one_shot = true
+disparo = ExtResource( 8 )
 
 [node name="Path2D2" type="Path2D" parent="."]
 position = Vector2( 3.75073, 8.50685 )
@@ -311,8 +308,6 @@ script = ExtResource( 15 )
 [node name="MusicaFinal" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 19 )
 script = ExtResource( 18 )
-
-[connection signal="timeout" from="Path2D/PathFollow2D/Timer" to="Path2D/PathFollow2D" method="_on_Timer_timeout"]
 
 [editable path="Path2D2/PathFollow2D/Enemigo"]
 [editable path="Path2D2/PathFollow2D/Enemigo2"]

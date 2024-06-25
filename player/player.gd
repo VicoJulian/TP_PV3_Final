@@ -27,9 +27,7 @@ func _ready():
 	
 	
 	
-func _input(event):
-	pass
-	
+
 	
 func _physics_process(delta):
 	
@@ -69,55 +67,59 @@ func _physics_process(delta):
 			nuevo_disparo.velocidad.x=-nuevo_disparo.potencia
 				
 				
-	if (get_slide_collision(get_slide_count()-1)!=null):
-			var obj_colision=get_slide_collision(get_slide_count()-1).collider
-			if (obj_colision.is_in_group("pinches")):
-				print("PINCHE CONTACTO")
-				position=Vector2(72,13)
-				Globales.Vidas-=1
-				$Muerto.play()
-			if (obj_colision.is_in_group("Pozo")):
-				print("SE CAYO")
-				position=Vector2(72,13)
-				Globales.Vidas-=1
-				$Muerto.play()
-			if (obj_colision.is_in_group("bola_fuego")):
-				print("MUERTO POR MAGO")
-				obj_colision.queue_free()
-				position=Vector2(72,13)
-				Globales.Vidas-=1
-				$Muerto.play()
-			if (obj_colision.is_in_group("enemigo")):
-				print("MUERTO")
-				position=Vector2(72,13)
-				Globales.Vidas-=1
-				$Muerto.play()
-				
-	if (Input.is_action_just_pressed("interactuar")):
+	if get_slide_count() > 0:
 		if (get_slide_collision(get_slide_count()-1)!=null):
-			var obj_colision=get_slide_collision(get_slide_count()-1).collider
-			if (obj_colision.is_in_group("cofre")):
-				_on_abrir_cofre()
+			
+				var obj_colision=get_slide_collision(get_slide_count()-1).collider
+				if (obj_colision.is_in_group("pinches")):
+					print("PINCHE CONTACTO")
+					position=Vector2(72,13)
+					Globales.Vidas-=1
+					$Muerto.play()
+				if (obj_colision.is_in_group("Pozo")):
+					print("SE CAYO")
+					position=Vector2(72,13)
+					Globales.Vidas-=1
+					$Muerto.play()
+				if (obj_colision.is_in_group("bola_fuego")):
+					print("MUERTO POR MAGO")
+					obj_colision.queue_free()
+					position=Vector2(72,13)
+					Globales.Vidas-=1
+					$Muerto.play()
+				if (obj_colision.is_in_group("enemigo")):
+					print("MUERTO")
+					position=Vector2(72,13)
+					Globales.Vidas-=1
+					$Muerto.play()
 				
-			if (obj_colision.is_in_group("llave")):
-				_on_regoger_llave(obj_colision)
 				
-			if (obj_colision.is_in_group("puerta") && Globales.Puerta_uno_abierta):
-				_on_pasar_planta_baja()
+	if Input.is_action_just_pressed("interactuar"):
+		if get_slide_count() > 0:
+			var collision = get_slide_collision(get_slide_count() - 1)
+			if collision:
+				var obj_colision = collision.collider
+				if (obj_colision.is_in_group("cofre")):
+					_on_abrir_cofre()
+				if (obj_colision.is_in_group("llave")):
+					_on_regoger_llave(obj_colision)
 				
-			if (obj_colision.is_in_group("cofrepb")):
-				_on_abrir_cofre_pb()
+				if (obj_colision.is_in_group("puerta") && Globales.Puerta_uno_abierta):
+					_on_pasar_planta_baja()
 				
-			if (obj_colision.is_in_group("vara")):
-				_on_recoger_vara(obj_colision)
+				if (obj_colision.is_in_group("cofrepb")):
+					_on_abrir_cofre_pb()
 				
-			if (obj_colision.is_in_group("puertapb")&& Globales.Puerta_dos_abierta):
-				print("paso a la torre")
-				get_tree().change_scene("res://Torre.tscn")
+				if (obj_colision.is_in_group("vara")):
+					_on_recoger_vara(obj_colision)
 				
-			if (obj_colision.is_in_group("bara_mago_malo")):
-				get_tree().change_scene("res://Menues/Fin.tscn")
-				print("FIN")
+				if obj_colision.is_in_group("puertapb") && Globales.Puerta_dos_abierta:
+					print("paso a la torre")
+					get_tree().change_scene("res://Torre.tscn")
+				
+				if (obj_colision.is_in_group("bara_mago_malo")):
+					get_tree().change_scene("res://Menues/Fin.tscn")
+					print("FIN")
 				
 	if (Globales.Puerta_dos_abierta):
 		_on_cambiar_traje()
@@ -126,8 +128,8 @@ func _physics_process(delta):
 	motion = motion.normalized()*100*0.5
 	move_and_slide(motion)
 	
-	if (Globales.Vidas<1):
-		get_tree().change_scene("res://Menues/Muerto.tscn")
+	if Globales.Vidas < 1:
+			get_tree().change_scene("res://Menues/Muerto.tscn")
 	
 	
 
